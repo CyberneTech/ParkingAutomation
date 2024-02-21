@@ -2,7 +2,6 @@
 ## About 
 This project simulates an automated parking lot management system. Features a CLI Tool with a set of commands to create, manage and retrieve information about the parking lot. 
 Functionality:
-
 + Accommodates up to n cars with numbered slots (closest to entry first).
 + Issues tickets upon car entry, recording registration number, color, and assigned slot.
 + Marks slots available upon ticket return.
@@ -11,8 +10,8 @@ Functionality:
    - Slot number of a car with a given registration number.
    - Slot numbers of all cars with a specific color.
 
-## Steps for Installation
 
+## Steps for Installation
 1. Clone the repo
    ```sh
     git clone https://github.com/CyberneTech/ParkingAutomation.git
@@ -29,9 +28,9 @@ Functionality:
    ```
 4. after `shell:>` prompt appears, enter `help` to get list of possible commands
 5. use this guide and enter commads as listed to use the parking automation tool. Start with creating the parking lot using command:
-```sh
+   ```sh
    create_parking_lot <size_of_lot>
-```
+   ```
 6. use park/leave/ other commands given below to perform desired action. 
 7. finally, enter command `exit` to terminate the application.
 
@@ -48,4 +47,13 @@ Functionality:
 
 >   +  exit: to terminate the application
 
-## Screenshots of prompt outputs
+## Project structure explanation
++ Entities: 
+   - Vehicle: to model vehicle properties, i.e., store registration number and the colour of the vehicle.
+   - Parking: parking slot specific abstraction, to mark the availablity of parking slot and save the details of vehicle (if parked.)
+   - ParkingLot: **singleton class** for the entire parking space, to make single parkingLot instance available across the services.
++ Services:
+   - parkingReservationService: methods that handle instantiation of ParkingLot, reserving and releasing the parking slot for a given vehicle.
+   - parkingVehicleInformationService: methods to retreive the parking/ vehicle information based on it's regitration number or color provided(as mentioned in requirements)
++ Controller: Provides shell commands, along with their description (e.g. park, leave) to manage the parking lot through service calls.
++ Utils: Offers utility functions for formatting parking lot status/details and displaying them in a user-friendly manner.
